@@ -1,0 +1,22 @@
+<md-menu class="tile-menu" md-position-mode="target-right target">
+    <md-button class="md-icon-button flex-none" ng-click="$mdOpenMenu()" aria-label="Menu">
+        <md-icon md-svg-icon="icons:vdots"></md-icon>
+    </md-button>
+
+    <md-menu-content width="4">
+        <md-menu-item ng-repeat="item in $ctrl.menu">
+            <md-button ng-if="!item.submenu" ng-click="item.action(item, $index)">{{:: item.title }}</md-button>
+
+            <md-menu ng-if="item.submenu">
+                <md-button ng-click="item.action(item, $index)">{{:: item.title }}</md-button>
+
+                <md-menu-content>
+                    <md-menu-item ng-repeat="subitem in item.submenu">
+                        <md-button ng-click="subitem.action(item, $index)">{{:: subitem.title }}</md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+        </md-menu-item>
+
+    </md-menu-content>
+</md-menu>

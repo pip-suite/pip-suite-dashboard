@@ -1,0 +1,6 @@
+<pip-tile-menu pip-menu="$ctrl.options.menu" ng-if="!$ctrl.options.hideMenu"></pip-tile-menu>
+<div class="pip-tile-content {{ $ctrl.color }} layout-column" ng-class="{ small: $ctrl.options.size.colSpan == 1 && $ctrl.options.size.rowSpan == 1,
+        medium: $ctrl.options.size.colSpan == 2 && $ctrl.options.size.rowSpan == 1,
+        big: $ctrl.options.size.colSpan == 2 && $ctrl.options.size.rowSpan == 2 }">
+    <pip-specific-template></pip-specific-template>
+</div>

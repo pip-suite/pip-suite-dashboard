@@ -1,0 +1,5 @@
+<div class="tile-heading lp16 rp8 layout-row layout-align-end-center flex-none" ng-if="$ctrl.options.locationName">
+    <span class="flex tile-title text-overflow">{{ $ctrl.options.locationName }}</span>
+</div>
+
+<pip-location-map class="flex" ng-if="$ctrl.showPosition" pip-stretch="true" pip-rebind="true" pip-location-pos="$ctrl.options.location"></pip-location>

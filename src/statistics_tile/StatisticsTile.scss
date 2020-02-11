@@ -1,0 +1,14 @@
+.pip-statistics-tile {
+    &.small {
+        .tile-title {
+            display: none;
+        }
+    }
+
+  .tile-heading {
+      padding: 16px 8px 0px 16px;
+      span {
+          max-width: calc(100% - 20px);
+      }
+  }
+}

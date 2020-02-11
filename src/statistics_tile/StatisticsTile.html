@@ -1,0 +1,8 @@
+<div class="tile-heading layout-row layout-align-start-center flex-none">
+    <span class="tile-title flex-auto text-overflow">{{ $ctrl.options.title || $ctrl.options.name }}</span>
+</div>
+<div class="flex-auto layout-row layout-align-center-center" ng-if="$ctrl.options.series && !$ctrl.reset">
+    <pip-pie-chart pip-series="$ctrl.options.series" ng-if="!$ctrl.options.chartType || $ctrl.options.chartType == 'pie'" pip-donut="true"
+        pip-pie-size="$ctrl.chartSize" pip-show-total="true" pip-centered="true">
+    </pip-pie-chart>
+</div>

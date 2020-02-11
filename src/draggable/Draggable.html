@@ -1,0 +1,47 @@
+<div class="pip-draggable-holder">
+  <div class="pip-draggable-group" 
+       pip-drop="true"
+       pip-drop-success="$ctrl.onDropListener($index, $event)"
+       pip-enter="$ctrl.onDropEnterListener($index, $event)"
+       pip-leave="$ctrl.onDropLeaveListener($index, $event)"
+       pip-deactive="$ctrl.onDropDeactivateListener($index, $event)"
+       ng-repeat="group in $ctrl.groups"
+       data-group-id="{{ $index }}" 
+       pip-draggable-tiles="group.source">
+    <div class="pip-draggable-group-title layout-row layout-align-start-center">
+      <div class="title-input-container" ng-click="$ctrl.onTitleClick(group, $event)">
+        <input ng-if="group.editingName" ng-blur="$ctrl.onBlurTitleInput(group)" 
+               ng-keypress="$ctrl.onKyepressTitleInput(group, $event)"
+               ng-model="group.title">
+        </input>
+        <div class="text-overflow flex-none" ng-if="!group.editingName">{{ group.title }}</div>
+      </div>
+      <md-button class="md-icon-button flex-none layout-align-center-center" 
+        ng-show="group.editingName" ng-click="$ctrl.cancelEditing(group)"
+        aria-label="Cancel">
+        <md-icon md-svg-icon="icons:cross"></md-icon>
+      </md-button>
+      <md-menu class="flex-none layout-column" md-position-mode="target-right target" ng-show="!group.editingName">
+        <md-button class="md-icon-button flex-none layout-align-center-center" ng-click="$mdOpenMenu(); groupId = $index" aria-label="Menu">
+          <md-icon md-svg-icon="icons:dots"></md-icon>
+        </md-button>
+        <md-menu-content width="4">
+          <md-menu-item ng-repeat="action in $ctrl.groupMenuActions">
+            <md-button ng-click="action.callback(groupId)">{{ action.title }}</md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+    </div>
+  </div>
+
+  <div class="pip-draggable-group fict-group layout-align-center-center layout-column tm16" 
+       pip-drop="true"
+       pip-drop-success="$ctrl.onDropToFictGroupListener($event)"
+       pip-enter="$ctrl.onDropEnterListener(null, $event)"
+       pip-leave="$ctrl.onDropLeaveListener(null, $event)"
+       pip-deactive="$ctrl.onDropDeactivateListener(null, $event)">
+    <div class="fict-group-text-container">
+          <md-icon md-svg-icon="icons:plus"></md-icon>{{ 'DROP_TO_CREATE_NEW_GROUP' | translate }}
+    </div>
+  </div>
+</div>
